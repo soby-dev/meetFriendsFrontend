@@ -1,5 +1,4 @@
-import React from "react";
-// import Modal from "react-bootstrap/Modal";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -7,8 +6,7 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-// import { toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import AuthContext from "../components/AuthContext";
 
 const schema = yup.object().shape({
   username: yup
@@ -39,6 +37,7 @@ const schema = yup.object().shape({
 
 export default function Register(props) {
   let navigate = useNavigate();
+  let { root_url } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
