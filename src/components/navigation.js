@@ -13,7 +13,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import AuthContext from "../components/AuthContext";
 import Tooltip from "@mui/material/Tooltip";
 
-export default function ButtonAppBar() {
+export default function Navigation() {
   let { user, logoutUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
