@@ -173,11 +173,10 @@ export default function AdvancedEventSearch(props) {
     let header;
     if (user) {
       header = {
-        "content-type": "application/json",
         Authorization: "Bearer " + String(authToken?.access),
       };
     } else {
-      header = { "content-type": "application/json" };
+      header = {};
     }
 
     fetch(`${root_url}/events/get-event/`, {
