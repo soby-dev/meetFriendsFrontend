@@ -21,7 +21,7 @@ export function AuthProvider({ children }) {
   console.log(events);
 
   // let root_url = "http://localhost:8000";
-  let root_url = "http://meetfriendsbackend.herokuapp.com";
+  let root_url = "https://meetfriendsbackend.herokuapp.com";
 
   let navigate = useNavigate();
 
