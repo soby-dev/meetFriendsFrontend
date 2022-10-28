@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import Home from "./pages/HomePage";
 import { Container } from "@mui/material";
-// import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation";
 import Login from "./pages/LoginPage";
 import Register from "./pages/RegisterPage";
 import { AuthProvider } from "./components/AuthContext";
@@ -17,7 +17,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        {/* <Navigation></Navigation> */}
+        <Navigation></Navigation>
         <Container sx={{ mt: 3 }}>
           <Routes>
             <Route path="/" element={<Home />}></Route>
