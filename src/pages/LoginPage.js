@@ -68,7 +68,7 @@ export default function Login(props) {
 
         <Box textAlign="center">
           <Button
-            sx={{ backgroundColor: colours.button }}
+            sx={{ backgroundColor: "purple" }}
             type="submit"
             variant="contained"
           >
@@ -81,7 +81,11 @@ export default function Login(props) {
           Don't have an acccount?
         </Typography>
         <Box sx={{ mt: 1 }} textAlign="center">
-          <Button variant="contained" onClick={() => navigate("/register")}>
+          <Button
+            variant="contained"
+            onClick={() => navigate("/register")}
+            sx={{ backgroundColor: "purple" }}
+          >
             Register
           </Button>
         </Box>

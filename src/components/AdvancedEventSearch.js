@@ -98,8 +98,6 @@ export default function AdvancedEventSearch(props) {
   let { root_url, events, setEvents, user, authToken } =
     useContext(AuthContext);
 
-  const { show, closeCanvas, load } = props;
-
   const filterEvents = async (data, e) => {
     // setFiltered(false)
 
@@ -174,9 +172,12 @@ export default function AdvancedEventSearch(props) {
 
     let header;
     if (user) {
-      header = { Authorization: "Bearer " + String(authToken?.access) };
+      header = {
+        "content-type": "application/json",
+        Authorization: "Bearer " + String(authToken?.access),
+      };
     } else {
-      header = {};
+      header = { "content-type": "application/json" };
     }
 
     fetch(`${root_url}/events/get-event/`, {
@@ -321,7 +322,7 @@ export default function AdvancedEventSearch(props) {
               </Collapse>
             </div>
 
-            <div>
+            {/* <div>
               <Box sx={{ mb: 1 }}>
                 <input
                   onClick={() => setOpenDistance(!openDistance)}
@@ -355,7 +356,7 @@ export default function AdvancedEventSearch(props) {
                   />
                 </div>
               </Collapse>
-            </div>
+            </div> */}
 
             <div>
               <Box sx={{ mb: 1 }}>

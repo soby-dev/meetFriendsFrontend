@@ -17,28 +17,11 @@ export function AuthProvider({ children }) {
   const [authToken, setAuthToken] = useState(() =>
     isToken ? JSON.parse(isToken) : null
   );
-  const [userInfo, setUserInfo] = useState(null);
-  const [interests, setInterests] = React.useState(null);
-  const [notifications, setNotifications] = React.useState(null);
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
   const [events, setEvents] = useState(null);
   console.log(events);
 
-  // sets the server location
   // let root_url = "http://localhost:8000";
-  // let root_url = 'https://soby-practice.herokuapp.com'
-  let root_url = "https://meetfriendsbackend.herokuapp.com";
-
-  //   useEffect(() => {
-  //     if (user) {
-  //       getUser(user.username);
-  //     }
-  //   }, [user]);
-
-  //   useEffect(() => {
-  //     getLocation();
-  //   }, []);
+  let root_url = "http://meetfriendsbackend.herokuapp.com";
 
   let navigate = useNavigate();
 
@@ -46,6 +29,7 @@ export function AuthProvider({ children }) {
   const loginUser = async (data, e) => {
     e.preventDefault(); //This stops function in form from running immediately login page is loaded. it should only run on submit
     // This contacts django api and gets a response
+
     fetch(`${root_url}/users/token/`, {
       method: "POST",
       headers: {
@@ -58,9 +42,7 @@ export function AuthProvider({ children }) {
     })
       .then((response) => {
         if (!response.ok) {
-          return response.json().then((text) => {
-            // zzz
-          });
+          return response.json().then((text) => {});
         } else {
           return response.json().then((responseData) => {
             setAuthToken(responseData);
@@ -83,22 +65,6 @@ export function AuthProvider({ children }) {
     window.location.reload(false);
   }
 
-  //   function getLocation() {
-  //     navigator.geolocation.getCurrentPosition(
-  //       (position) => {
-  //         var latitude = position.coords.latitude;
-  //         var longitude = position.coords.longitude;
-
-  //         setLatitude(latitude);
-  //         setLongitude(longitude);
-  //       },
-  //       function errorCallback(error) {},
-  //       {
-  //         timeout: 3000,
-  //       }
-  //     );
-  //   }
-
   // data to be passed using auth provider
   let contextData = {
     loginUser: loginUser,
@@ -107,17 +73,7 @@ export function AuthProvider({ children }) {
     user: user,
     events: events,
     setEvents: setEvents,
-    // userInfo: userInfo,
-    // getUser: getUser,
-    // interests: interests,
     root_url: root_url,
-    // user_longitude: longitude,
-    // user_latitude: latitude,
-    // notifications: notifications,
-    // getNotifications: getNotifications,
-    // setUser: setUser,
-    // setUserInfo: setUserInfo,
-    // setAuthToken: setAuthToken,
   };
 
   // anytime AuthProvider is called, this value would be returned alongside all the elemnts passed to the authProvider (children). see app.js
