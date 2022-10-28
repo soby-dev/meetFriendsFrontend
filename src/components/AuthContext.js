@@ -26,8 +26,9 @@ export function AuthProvider({ children }) {
   console.log(events);
 
   // sets the server location
-  let root_url = "http://localhost:8000";
+  // let root_url = "http://localhost:8000";
   // let root_url = 'https://soby-practice.herokuapp.com'
+  let root_url = "https://meetfriendsbackend.herokuapp.com";
 
   //   useEffect(() => {
   //     if (user) {
