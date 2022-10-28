@@ -3,11 +3,11 @@ import React, { useEffect } from "react";
 import "./App.css";
 import Home from "./pages/HomePage";
 import { Container } from "@mui/material";
-import Navigation from "./components/Navigation";
 import Login from "./pages/LoginPage";
 import Register from "./pages/RegisterPage";
 import { AuthProvider } from "./components/AuthContext";
 import CreateEvent from "./pages/CreateEventPage";
+import Header from "./components/Header";
 
 function App() {
   useEffect(() => {
@@ -17,7 +17,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <Navigation></Navigation>
+        <Header></Header>
         <Container sx={{ mt: 3 }}>
           <Routes>
             <Route path="/" element={<Home />}></Route>
