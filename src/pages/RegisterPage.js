@@ -54,7 +54,7 @@ export default function Register(props) {
     let username = e.target.username.value;
     let password = e.target.password.value;
     let loginCreds = { username: username, password: password };
-    fetch("http://localhost:8000/users/register/", {
+    fetch(`${root_url}/users/register/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -111,6 +111,8 @@ export default function Register(props) {
         helperText={errors.email && errors.email.message}
         {...register("email")}
         error={errors.email ? true : false}
+        color="secondary"
+        focused
       />
 
       <TextField
@@ -123,6 +125,8 @@ export default function Register(props) {
         helperText={errors.name && errors.name.message}
         {...register("name")}
         error={errors.name ? true : false}
+        color="secondary"
+        focused
       />
 
       <TextField
@@ -135,6 +139,8 @@ export default function Register(props) {
         helperText={errors.username && errors.username.message}
         {...register("username")}
         error={errors.username ? true : false}
+        color="secondary"
+        focused
       />
 
       <TextField
@@ -142,6 +148,8 @@ export default function Register(props) {
         name="password"
         label="password"
         placeholder="Your password"
+        color="secondary"
+        focused
         type="password"
         sx={{ width: 1 }}
         helperText={
@@ -158,6 +166,8 @@ export default function Register(props) {
         name="confirmPassword"
         label="confirm password"
         placeholder="Confirm your password"
+        color="secondary"
+        focused
         type="password"
         sx={{ width: 1 }}
         helperText={errors.confirmPassword && "Passwords must match!"}
@@ -166,7 +176,11 @@ export default function Register(props) {
       />
 
       <Box textAlign="right">
-        <Button type="submit" variant="contained">
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ backgroundColor: "purple" }}
+        >
           Register
         </Button>
       </Box>

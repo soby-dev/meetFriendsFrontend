@@ -43,13 +43,9 @@ export default function EventsDisplay(props) {
     console.log(participants);
   }, [participants]);
 
-  function participantHandler(number) {
-    return number - 1;
-  }
-
   return (
     <Box component="div" sx={{ m: 1, mt: 6 }}>
-      {events ? (
+      {events && (
         <Masonry columns={2} spacing={2}>
           {events.map((event, index) => {
             return (
@@ -126,10 +122,6 @@ export default function EventsDisplay(props) {
             );
           })}
         </Masonry>
-      ) : (
-        <Typography textAlign={"center"}>
-          No events match your search
-        </Typography>
       )}
     </Box>
   );
