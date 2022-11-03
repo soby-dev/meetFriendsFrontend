@@ -39,10 +39,6 @@ export default function EventsDisplay(props) {
     }
   }, [events]);
 
-  useEffect(() => {
-    console.log(participants);
-  }, [participants]);
-
   return (
     <Box component="div" sx={{ m: 1, mt: 6 }}>
       {events && (

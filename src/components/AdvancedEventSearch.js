@@ -1,6 +1,5 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import Collapse from "./Collapse";
 import Typography from "@mui/material/Typography";
@@ -8,18 +7,15 @@ import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import TownSelect from "./TownSelect";
 import TextField from "@mui/material/TextField";
-import { styled } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import "react-toastify/dist/ReactToastify.css";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import AuthContext from "./AuthContext";
 import { colours } from "../colours";
 import TagCheckBox from "./TagCheckbox";
 import InputAdornment from "@mui/material/InputAdornment";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 let today = new Date();
 today.setDate(today.getDate() - 1);
@@ -74,6 +70,8 @@ const schem = yup.object().shape({
 });
 
 export default function AdvancedEventSearch(props) {
+  const notify = () => toast.success("Wow so easy!");
+
   const [openLocation, setOpenLocation] = useState(false);
 
   // collapse Interest filter options and open it
@@ -195,13 +193,14 @@ export default function AdvancedEventSearch(props) {
         } else {
           return response.json().then((responseData) => {
             setEvents(responseData);
-            // toast.success('Filtered!', {position: toast.POSITION.TOP_RIGHT, autoClose: 2000})
+            console.log(responseData);
+            if (responseData.length < 1) {
+              alert("No events were found for this search");
+            }
           });
         }
       })
-      .catch((err) => {
-        // toast.error(err.message, {position: toast.POSITION.TOP_RIGHT, autoClose: 8000})
-      });
+      .catch((err) => {});
   };
 
   const {
